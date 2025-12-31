@@ -1,111 +1,95 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", "PingFang SC", sans-serif;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
+/* Reset & 基础 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html,body { width:100%; height:100%; }
+body {
+  font-family: "Segoe UI","PingFang SC", "Microsoft YaHei", sans-serif;
   background: radial-gradient(ellipse at bottom, #0b0b16 0%, #000 70%);
   color: #f5e6c8;
   overflow: hidden;
 }
 
-/* Canvas 层级 */
-#background-particles,
-#fireworks {
+/* Canvas 层 */
+#background-particles, #fireworks {
   position: fixed;
   inset: 0;
   pointer-events: none;
 }
-
 #background-particles { z-index: 0; }
 #fireworks { z-index: 2; }
 
-/* 主体 */
+/* 主体容器 */
 .container {
   position: relative;
-  z-index: 1;
-  height: 100%;
+  z-index: 3;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 40px;
+  gap: 30px;
+  padding: 40px 20px;
 }
 
-/* 标题 */
+/* 标题区 */
 .title-cn {
   font-size: 28px;
-  background: linear-gradient(90deg, #f5e6c8, #d7b8ff);
+  font-weight: 700;
+  background: linear-gradient(90deg,#f5e6c8,#d7b8ff);
   -webkit-background-clip: text;
   color: transparent;
 }
+.title-en { font-size: 14px; color: rgba(215,184,255,0.9); margin-top:6px; }
+.divider { opacity:0.6; margin:8px 0; }
+.lover { margin-top:6px; font-size:13px; color: rgba(245,230,200,0.9); }
 
-.title-en {
+/* 时钟区（替代倒计时） */
+.clock-section { margin-top: 6px; }
+.clock-label { font-size: 14px; color: rgba(215,184,255,0.9); margin-bottom: 6px; }
+.clock-display { display:flex; flex-direction:column; align-items:center; gap:8px; margin-bottom:12px; }
+.clock-date {
   font-size: 16px;
-  opacity: 0.8;
+  color: rgba(245,230,200,0.95);
 }
-
-.divider {
-  margin: 10px 0;
-  opacity: 0.6;
-}
-
-.lover {
-  margin-top: 8px;
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* 倒计时 */
-.countdown-grid {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 26px;
-}
-
-.countdown-grid span {
-  font-size: 36px;
-  background: linear-gradient(180deg, #ffd700, #ffb6ff);
+.clock-time {
+  font-size: 42px;
+  font-weight:700;
+  background: linear-gradient(90deg,#ffd700,#d7b8ff);
   -webkit-background-clip: text;
   color: transparent;
+  text-shadow: 0 0 10px rgba(215,184,255,0.08);
 }
 
-.countdown-grid small {
-  display: block;
-  font-size: 12px;
-  opacity: 0.7;
+/* 文案与按钮 */
+.welcome { color: rgba(245,230,200,0.9); margin-top:10px; }
+.newyear {
+  font-size: 20px;
+  background: linear-gradient(90deg,#ffd700,#ff69b4);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top:6px;
 }
 
-.countdown-grid em {
-  opacity: 0.5;
-}
-
-button {
-  margin-top: 20px;
-  padding: 12px 26px;
-  font-size: 16px;
-  color: #fff;
-  background: linear-gradient(135deg, #ffd700, #ff69b4);
-  border: none;
+#firework-button {
+  margin-top: 14px;
+  padding: 10px 20px;
   border-radius: 40px;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(255,215,0,0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  background: linear-gradient(135deg,#ffd700,#ff69b4);
+  color: #000;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 0 18px rgba(255,215,0,0.35);
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+#firework-button:hover { transform: translateY(-3px); box-shadow: 0 0 26px rgba(255,215,0,0.55); }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255,215,0,0.6);
-}
+/* 时间系统文本 */
+.time-system { opacity: 0.8; font-size: 12px; margin-top: 12px; color: rgba(215,184,255,0.85); }
 
-/* 时间系统 */
-.time-system {
-  opacity: 0.7;
-  font-size: 13px;
+/* 响应式微调 */
+@media (max-width: 480px) {
+  .title-cn { font-size: 20px; }
+  .clock-time { font-size: 32px; }
+  .container { padding: 20px; gap: 18px; }
 }
