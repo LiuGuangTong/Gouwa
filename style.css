@@ -1,120 +1,97 @@
-/* 基础样式 */
+/* 全局重置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Microsoft YaHei', sans-serif;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body, html {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    background: linear-gradient(to top, #000000 0%, #0a0a0a 100%);
-    color: #fff;
-    position: relative;
+    background: linear-gradient(to top, #000000, #0a0a0a);
+    color: #FFD700;
 }
 
-/* Canvas 层 */
-#background-particles {
+canvas {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: 0;
     pointer-events: none;
 }
 
-#fireworks {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* 背景光晕 */
-body::before {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200%;
-    height: 50%;
-    background: radial-gradient(circle, rgba(255,200,150,0.15), transparent 70%);
-    z-index: 1;
-}
-
-/* 内容布局 */
-.content {
+.container {
     position: relative;
     z-index: 3;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
-    padding: 2rem;
-    color: #f5e6c8;
+    padding-top: 80px;
+    color: #FFD700;
 }
 
 .title {
-    font-size: 2.2rem;
-    background: linear-gradient(90deg, #f5e6c8, #d7b8ff);
+    font-size: 2.2em;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FFD700, #D7B8FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: #d7b8ff;
-    margin-bottom: 1rem;
-}
-
-.dedication {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    color: #f5e6c8;
-}
-
-.countdown-container p {
-    font-size: 1rem;
-    margin: 0.2rem 0;
+    font-size: 1em;
+    margin-bottom: 30px;
+    color: rgba(215,184,255,0.8);
 }
 
 .countdown {
-    font-size: 2rem;
-    margin: 0.5rem 0 1rem 0;
-    background: linear-gradient(90deg, #f5e6c8, #d7b8ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.countdown-item {
+    margin: 0 5px;
+}
+
+.countdown-item span {
+    font-size: 2em;
+    background: linear-gradient(90deg, #FFD700, #D7B8FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.celebration {
-    font-size: 2rem;
-    margin: 1rem 0;
-    background: linear-gradient(90deg, #ffd700, #ff69b4, #ff4500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.separator {
+    font-size: 2em;
+    margin: 0 5px;
+    color: #D7B8FF;
+}
+
+.description, .info {
+    font-size: 1em;
+    margin: 10px 0;
+    color: rgba(245,230,200,0.8);
 }
 
 #firework-button {
-    font-size: 1.2rem;
-    padding: 0.6rem 1.5rem;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #f5e6c8, #d7b8ff);
-    color: #000;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 15px;
     cursor: pointer;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #FFD700, #D7B8FF);
+    color: #000;
     transition: all 0.3s ease;
-    margin-bottom: 2rem;
 }
 
 #firework-button:hover {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255,215,0,0.8);
     transform: scale(1.05);
-}
-
-.info {
-    font-size: 0.9rem;
-    color: #d7b8ff;
 }
