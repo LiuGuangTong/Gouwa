@@ -1,97 +1,111 @@
-/* 全局重置 */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Microsoft YaHei', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", "PingFang SC", sans-serif;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: linear-gradient(to top, #000000, #0a0a0a);
-    color: #FFD700;
+html, body {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #0b0b16 0%, #000 70%);
+  color: #f5e6c8;
+  overflow: hidden;
 }
 
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    pointer-events: none;
+/* Canvas 层级 */
+#background-particles,
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
+#background-particles { z-index: 0; }
+#fireworks { z-index: 2; }
+
+/* 主体 */
 .container {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 80px;
-    color: #FFD700;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 40px;
 }
 
-.title {
-    font-size: 2.2em;
-    font-weight: bold;
-    background: linear-gradient(90deg, #FFD700, #D7B8FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+/* 标题 */
+.title-cn {
+  font-size: 28px;
+  background: linear-gradient(90deg, #f5e6c8, #d7b8ff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.subtitle {
-    font-size: 1em;
-    margin-bottom: 30px;
-    color: rgba(215,184,255,0.8);
+.title-en {
+  font-size: 16px;
+  opacity: 0.8;
 }
 
-.countdown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    font-weight: bold;
+.divider {
+  margin: 10px 0;
+  opacity: 0.6;
 }
 
-.countdown-item {
-    margin: 0 5px;
+.lover {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.7;
 }
 
-.countdown-item span {
-    font-size: 2em;
-    background: linear-gradient(90deg, #FFD700, #D7B8FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* 倒计时 */
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 26px;
 }
 
-.separator {
-    font-size: 2em;
-    margin: 0 5px;
-    color: #D7B8FF;
+.countdown-grid span {
+  font-size: 36px;
+  background: linear-gradient(180deg, #ffd700, #ffb6ff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.description, .info {
-    font-size: 1em;
-    margin: 10px 0;
-    color: rgba(245,230,200,0.8);
+.countdown-grid small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
-#firework-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    margin-top: 15px;
-    cursor: pointer;
-    border: 2px solid #FFD700;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #FFD700, #D7B8FF);
-    color: #000;
-    transition: all 0.3s ease;
+.countdown-grid em {
+  opacity: 0.5;
 }
 
-#firework-button:hover {
-    box-shadow: 0 0 20px rgba(255,215,0,0.8);
-    transform: scale(1.05);
+button {
+  margin-top: 20px;
+  padding: 12px 26px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #ffd700, #ff69b4);
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,215,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255,215,0,0.6);
+}
+
+/* 时间系统 */
+.time-system {
+  opacity: 0.7;
+  font-size: 13px;
 }
