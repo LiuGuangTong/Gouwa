@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eternal Time, My Princess</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 前端密码门 -->
+  <div id="gate">
+    <p>Only those who remember time may enter.</p>
+    <input type="password" id="pw" placeholder="YYYYMM" />
+    <button onclick="unlock()">Enter</button>
+  </div>
+
+  <!-- 背景层 -->
+  <canvas id="stars"></canvas>
+  <div class="time-ring"></div>
+
+  <!-- 主体内容 -->
+  <main class="container">
+
+    <header>
+      <h1 class="title-cn">在所有可能的未来里，我始终选择你</h1>
+      <h2 class="title-en">Across every possible future, I choose you.</h2>
+    </header>
+
+    <!-- 跨年倒计时 -->
+    <section class="countdown">
+      <div><span id="days">0</span><small>Days</small></div>
+      <div><span id="hours">0</span><small>Hours</small></div>
+      <div><span id="minutes">0</span><small>Minutes</small></div>
+      <div><span id="seconds">0</span><small>Seconds</small></div>
+    </section>
+
+    <!-- 时间系统 -->
+    <section class="time-system">
+      <p class="time-system-cn">自 2016 年 5 月起，这个时间系统从未停止</p>
+      <p class="time-system-en">Since May 2016, this time system has never stopped.</p>
+
+      <div class="time-grid">
+        <div><span id="ts-days">0</span><small>Days</small></div>
+        <div><span id="ts-hours">0</span><small>Hours</small></div>
+        <div><span id="ts-minutes">0</span><small>Minutes</small></div>
+        <div><span id="ts-seconds">0</span><small>Seconds</small></div>
+      </div>
+    </section>
+
+    <footer class="signature">
+      <p>致我一生中最理性、也最温柔的选择</p>
+      <small>To the most rational and gentle choice of my life.</small>
+    </footer>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
