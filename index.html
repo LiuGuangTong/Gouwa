@@ -1,56 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eternal Time, My Princess</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>永恒时光致Gouwa的一生挚爱</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- 前端密码门 -->
   <div id="gate">
-    <p>Only those who remember time may enter.</p>
-    <input type="password" id="pw" placeholder="YYYYMM" />
-    <button onclick="unlock()">Enter</button>
+    <div class="gate-content">
+      <div class="gate-decoration">✦</div>
+      <p class="gate-text-cn">一生挚爱专属</p>
+      <p class="gate-text-en">Only those who remember time may enter.</p>
+      <input type="password" id="pw" placeholder="YYYYMM" />
+      <button onclick="unlock()">进入</button>
+    </div>
   </div>
 
   <!-- 背景层 -->
   <canvas id="stars"></canvas>
+  <canvas id="fireworks"></canvas>
+  <canvas id="cursor-trail"></canvas>
   <div class="time-ring"></div>
+  <div class="chinese-pattern"></div>
+  <div class="ripple-container"></div>
 
   <!-- 主体内容 -->
-  <main class="container">
+  <main class="container fade-in">
 
     <header>
-      <h1 class="title-cn">在所有可能的未来里，我始终选择你</h1>
+      <div class="title-wrapper">
+        <div class="title-decoration left">❋</div>
+        <h1 class="title-cn">在所有可能的未来里，我始终选择你</h1>
+        <div class="title-decoration right">❋</div>
+      </div>
       <h2 class="title-en">Across every possible future, I choose you.</h2>
+      <div class="lover-name">致 YJP</div>
     </header>
 
     <!-- 跨年倒计时 -->
     <section class="countdown">
-      <div><span id="days">0</span><small>Days</small></div>
-      <div><span id="hours">0</span><small>Hours</small></div>
-      <div><span id="minutes">0</span><small>Minutes</small></div>
-      <div><span id="seconds">0</span><small>Seconds</small></div>
+      <div class="countdown-label">距离新年</div>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">0</div>
+          <div class="countdown-unit">天</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">0</div>
+          <div class="countdown-unit">时</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">0</div>
+          <div class="countdown-unit">分</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">0</div>
+          <div class="countdown-unit">秒</div>
+        </div>
+      </div>
     </section>
 
     <!-- 时间系统 -->
     <section class="time-system">
-      <p class="time-system-cn">自 2016 年 5 月起，这个时间系统从未停止</p>
-      <p class="time-system-en">Since May 2016, this time system has never stopped.</p>
+      <div class="time-system-header">
+        <div class="system-icon">⏱</div>
+        <p class="time-system-cn">自 2016 年 5 月起，这个时间系统从未停止</p>
+        <p class="time-system-en">Since May 2016, this time system has never stopped.</p>
+      </div>
 
       <div class="time-grid">
-        <div><span id="ts-days">0</span><small>Days</small></div>
-        <div><span id="ts-hours">0</span><small>Hours</small></div>
-        <div><span id="ts-minutes">0</span><small>Minutes</small></div>
-        <div><span id="ts-seconds">0</span><small>Seconds</small></div>
+        <div class="time-item">
+          <div class="time-value" id="ts-days">0</div>
+          <div class="time-label">天</div>
+        </div>
+        <div class="time-item">
+          <div class="time-value" id="ts-hours">0</div>
+          <div class="time-label">时</div>
+        </div>
+        <div class="time-item">
+          <div class="time-value" id="ts-minutes">0</div>
+          <div class="time-label">分</div>
+        </div>
+        <div class="time-item">
+          <div class="time-value" id="ts-seconds">0</div>
+          <div class="time-label">秒</div>
+        </div>
       </div>
     </section>
 
     <footer class="signature">
-      <p>致我一生中最理性、也最温柔的选择</p>
+      <div class="signature-decoration">❁</div>
+      <p>致我一生挚爱，我的小公主</p>
       <small>To the most rational and gentle choice of my life.</small>
+      <div class="signature-decoration">❁</div>
     </footer>
 
   </main>
