@@ -1,87 +1,46 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Timeless Us | 我的永恒小公主</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 新年快乐</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 背景微粒 -->
+    <canvas id="background-particles"></canvas>
+    <!-- 烟花 -->
+    <canvas id="fireworks"></canvas>
 
-  <!-- 密码门 -->
-  <div id="gate">
-    <p>只有懂得我们时间的人才能进入</p>
-    <input type="password" id="pw" placeholder="YYYYMM" />
-    <button onclick="unlock()">进入</button>
-  </div>
+    <!-- 内容 -->
+    <div class="content">
+        <h1 class="title">在所有可能的未来里，我始终选择你</h1>
+        <p class="subtitle">Across every possible future, I choose you.</p>
+        <p class="dedication">致 YJP</p>
 
-  <!-- 背景 -->
-  <canvas id="stars"></canvas>
-  <canvas id="particles"></canvas>
-  <div class="time-ring"></div>
-
-  <!-- 主体内容 -->
-  <main class="container">
-
-    <header>
-      <h1 class="title-cn">在所有可能的未来里，我始终选择你</h1>
-      <h2 class="title-en">Across every possible future, I choose you.</h2>
-    </header>
-
-    <section class="countdown-time">
-      <!-- 跨年倒计时 -->
-      <div class="countdown">
-        <div><span id="days">0</span><small>天</small></div>
-        <div><span id="hours">0</span><small>时</small></div>
-        <div><span id="minutes">0</span><small>分</small></div>
-        <div><span id="seconds">0</span><small>秒</small></div>
-      </div>
-
-      <!-- 时间系统 -->
-      <div class="time-system">
-        <p class="time-system-cn">自 2016 年 5 月起，这个时间系统从未停止</p>
-        <p class="time-system-en">Since May 2016, this time system has never stopped.</p>
-
-        <div class="time-grid">
-          <div><span id="ts-days">0</span><small>天</small></div>
-          <div><span id="ts-hours">0</span><small>时</small></div>
-          <div><span id="ts-minutes">0</span><small>分</small></div>
-          <div><span id="ts-seconds">0</span><small>秒</small></div>
+        <div class="countdown-container">
+            <p>距离2026还有</p>
+            <p>距离新年</p>
+            <div class="countdown">
+                <span id="days">0</span>天 :
+                <span id="hours">00</span>时 :
+                <span id="minutes">36</span>分 :
+                <span id="seconds">03</span>秒
+            </div>
+            <p>让我们一起迎接美好的2026年！</p>
         </div>
-      </div>
-    </section>
 
-    <!-- 原左右信件 -->
-    <section class="letters">
-      <div class="letter left" id="letter-left">
-        亲爱的小公主杨金萍：<br><br>
-        此刻是2025年12月31日深夜，窗外或许有零星的烟火，或只是寻常的寂静。新年的钟声即将敲响，我想对你诉，老婆你辛苦，感谢2025你操劳的每一天。在每一个平凡的日子里，是周末我们一起在菜市场挑选食材的琐碎，是饭后并肩散步时，聊天的专注。是愿意把时间“浪费”在彼此身上。即使我们只是待在同一个空间里各自忙碌，偶尔抬头目光相遇，那份安心，我不需要你为我做太多，只希望和你一起经历生活的点点滴滴。和你一起面对生活的所有，无悔亦无惧。
-      </div>
-      <div class="letter right" id="letter-right">
-        关于2026：我们的新篇章<br><br>
-        告别2025的忙忙碌碌与酸甜苦辣，让我们揣着期待，一起“奔赴下一场山海”，准备同世界交手“又一轮的春夏秋冬”。愿我们的2026年，“平安喜乐，万事胜意”。所谓“万事胜意”，就是“一切都比你自己所期待的，还要好一点点”。愿新的一年“有趣有盼，无灾无难”，愿我们“日日明，事事顺，岁岁安”。把旧年的烦恼与遗憾清零，让新年的日子“热气腾腾”、“亮堂堂”。愿我们“兜里有钱，心里有爱，身边有伴，岁岁皆欢畅”。在“不断变化的光阴岁月里”，我最大的愿望是，你仍是你，自由、洒脱且快乐。我们，不必千里，只需携手，共度每一个即将到来的、平凡而珍贵的日子。
-      </div>
-    </section>
+        <h2 class="celebration">2026 新年快乐！</h2>
+        <button id="firework-button">🎆 点击释放烟花 🎆</button>
 
-    <!-- 新增左右信件 -->
-    <section class="letters new-letters">
-      <div class="letter left" id="letter-left-2">
-        亲爱的小公主的回忆：<br><br>
-        这一年，我们经历了许多小惊喜与温暖的瞬间。每一次的相视而笑，每一次的拥抱，每一次的默契，都让我感受到，你就是我生命中最重要的存在。希望未来的日子里，我们继续一起书写属于我们的浪漫故事。
-      </div>
-      <div class="letter right" id="letter-right-2">
-        关于未来：我们的愿望<br><br>
-        新的一年，愿我们手牵手，走过每一个春夏秋冬；愿每一天都有小确幸，愿彼此依然笑着面对生活的风雨；愿你我心中常有温暖和希望。无论世界如何变化，我只想陪在你身边，共度每一个平凡而珍贵的时刻。
-      </div>
-    </section>
+        <div class="info">
+            <p>始于心动，终于白首，拥之则安，伴之则暖
+新年快乐，我的挚爱。爱你的刘狗娃 2025年12月31日 夜
+</p>
+            <p>this time system has never stopped.</p>
+        </div>
+    </div>
 
-    <footer class="signature">
-      <p>致我一生中最理性、最温柔的选择</p>
-      <small>To the most rational and gentle choice of my life.</small>
-    </footer>
-
-  </main>
-
-  <script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
