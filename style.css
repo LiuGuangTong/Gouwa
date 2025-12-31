@@ -33,7 +33,11 @@ body {
     sans-serif;
   background: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f3460 100%);
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
   background-size: 200% 200%;
+  -webkit-animation: gradientShift 15s ease infinite;
+  -moz-animation: gradientShift 15s ease infinite;
+  -o-animation: gradientShift 15s ease infinite;
   animation: gradientShift 15s ease infinite;
   color: #e8e0ff;
   overflow-x: hidden;
@@ -41,6 +45,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@-webkit-keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes gradientShift {
@@ -75,6 +90,7 @@ body {
   z-index: 9999;
   color: #fff;
   text-align: center;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -332,16 +348,468 @@ header {
   max-width: 900px;
 }
 
+.countdown-main-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #ffd700;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 
+    0 0 30px rgba(255,215,0,0.8),
+    0 0 60px rgba(255,215,0,0.4),
+    0 0 90px rgba(255,215,0,0.2);
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 4px;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 30px rgba(255,215,0,0.8),
+      0 0 60px rgba(255,215,0,0.4),
+      0 0 90px rgba(255,215,0,0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 50px rgba(255,215,0,1),
+      0 0 100px rgba(255,215,0,0.6),
+      0 0 150px rgba(255,215,0,0.3);
+  }
+}
+
 .countdown-label {
   font-size: 1.2rem;
   color: rgba(255,255,255,0.8);
   margin-bottom: 30px;
+  text-align: center;
   font-family: 
     'PingFang SC', 
     'Hiragino Sans GB', 
     'Microsoft YaHei', 
     sans-serif;
   letter-spacing: 3px;
+}
+
+/* 欢迎消息 */
+.welcome-message {
+  margin-top: 40px;
+  text-align: center;
+  animation: welcomeFadeIn 1s ease-out;
+}
+
+@keyframes welcomeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-text {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
+  line-height: 1.6;
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* 新年祝福区域 */
+.new-year-greeting-section {
+  margin-top: 30px;
+  text-align: center;
+  animation: greetingFadeIn 1.2s ease-out;
+}
+
+@keyframes greetingFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.new-year-greeting-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #9fdcff;
+  font-weight: 700;
+  text-shadow: 
+    0 0 20px rgba(159,220,255,0.6),
+    0 0 40px rgba(159,220,255,0.3);
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 3px;
+  animation: greetingPulse 2s ease-in-out infinite;
+}
+
+@keyframes greetingPulse {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 
+      0 0 20px rgba(159,220,255,0.6),
+      0 0 40px rgba(159,220,255,0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 
+      0 0 30px rgba(159,220,255,0.8),
+      0 0 60px rgba(159,220,255,0.5);
+  }
+}
+
+/* 烟花按钮 */
+.firework-button-container {
+  margin-top: 50px;
+  text-align: center;
+  animation: buttonFadeIn 1.5s ease-out;
+}
+
+@keyframes buttonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.firework-button {
+  position: relative;
+  padding: 18px 50px;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  color: #ffd700;
+  background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.1));
+  border: 3px solid #ffd700;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 3px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 0 30px rgba(255,215,0,0.5),
+    inset 0 0 20px rgba(255,215,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 240px;
+  justify-content: center;
+}
+
+.firework-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,215,0,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.firework-button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.firework-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 0 50px rgba(255,215,0,0.8),
+    0 0 100px rgba(255,215,0,0.4),
+    inset 0 0 30px rgba(255,215,0,0.2);
+  border-color: #ffd700;
+  background: linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,215,0,0.2));
+}
+
+.firework-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.firework-emoji {
+  font-size: 1.5em;
+  display: inline-block;
+  animation: emojiBounce 1s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes emojiBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(10deg);
+  }
+}
+
+.firework-text {
+  position: relative;
+  z-index: 1;
+}
+
+.firework-button:hover .firework-emoji {
+  animation: emojiBounce 0.5s ease-in-out infinite;
+}
+
+@keyframes buttonFlash {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(255,215,0,0.5),
+      inset 0 0 20px rgba(255,215,0,0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 60px rgba(255,215,0,1),
+      0 0 120px rgba(255,215,0,0.6),
+      inset 0 0 40px rgba(255,215,0,0.3);
+  }
+}
+
+/* ===============================
+   最后10秒倒计时
+   =============================== */
+.final-countdown {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: finalCountdownFadeIn 0.5s ease-out;
+}
+
+@keyframes finalCountdownFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.final-countdown-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,10,46,0.95) 0%, rgba(15,52,96,0.95) 100%);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.final-countdown-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.final-countdown-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #ffd700;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 
+    0 0 30px rgba(255,215,0,0.8),
+    0 0 60px rgba(255,215,0,0.4);
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 4px;
+  animation: titlePulse 2s ease-in-out infinite;
+}
+
+.final-countdown-number {
+  font-size: clamp(8rem, 20vw, 15rem);
+  color: #ffd700;
+  font-family: 'Digital', 'Courier New', 'Consolas', 'Monaco', monospace;
+  font-weight: 900;
+  text-shadow: 
+    0 0 50px rgba(255,215,0,1),
+    0 0 100px rgba(255,215,0,0.6),
+    0 0 150px rgba(255,215,0,0.3);
+  line-height: 1;
+  -webkit-animation: numberPulse 1s ease-in-out;
+  -moz-animation: numberPulse 1s ease-in-out;
+  -o-animation: numberPulse 1s ease-in-out;
+  animation: numberPulse 1s ease-in-out;
+  will-change: transform, opacity;
+}
+
+@keyframes numberPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   新年祝福
+   =============================== */
+.new-year-blessing {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.blessing-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,10,46,0.98) 0%, rgba(15,52,96,0.98) 100%);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+}
+
+.blessing-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(159,220,255,0.1));
+  border: 3px solid rgba(255,215,0,0.5);
+  border-radius: 30px;
+  box-shadow: 
+    0 0 60px rgba(255,215,0,0.4),
+    inset 0 0 40px rgba(255,215,0,0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+@keyframes blessingFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.blessing-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: #ffd700;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 
+    0 0 40px rgba(255,215,0,0.8),
+    0 0 80px rgba(255,215,0,0.4);
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 4px;
+  animation: blessingTitleGlow 3s ease-in-out infinite;
+}
+
+@keyframes blessingTitleGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 40px rgba(255,215,0,0.8),
+      0 0 80px rgba(255,215,0,0.4);
+  }
+  50% {
+    text-shadow: 
+      0 0 60px rgba(255,215,0,1),
+      0 0 120px rgba(255,215,0,0.6),
+      0 0 180px rgba(255,215,0,0.3);
+  }
+}
+
+.blessing-text {
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  color: rgba(255,255,255,0.95);
+  line-height: 2;
+  margin-bottom: 40px;
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  animation: blessingTextFadeIn 2s ease-out;
+}
+
+@keyframes blessingTextFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blessing-signature {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #9fdcff;
+  font-weight: 700;
+  text-shadow: 
+    0 0 20px rgba(159,220,255,0.6),
+    0 0 40px rgba(159,220,255,0.3);
+  font-family: 
+    'PingFang SC', 
+    'Hiragino Sans GB', 
+    'Microsoft YaHei', 
+    sans-serif;
+  letter-spacing: 4px;
+  margin-top: 30px;
+  animation: signatureFadeIn 2.5s ease-out;
+}
+
+@keyframes signatureFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .countdown-grid {
@@ -361,11 +829,17 @@ header {
   box-shadow: 
     0 0 30px rgba(255,215,0,0.3),
     inset 0 0 20px rgba(255,215,0,0.1);
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
   perspective: 1000px;
+  will-change: transform, box-shadow;
 }
 
 .countdown-item::before {
@@ -420,9 +894,16 @@ header {
     0 0 40px rgba(255,215,0,0.4);
   line-height: 1.2;
   margin-bottom: 8px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   display: inline-block;
+  -webkit-animation: numberGlow 2s ease-in-out infinite;
+  -moz-animation: numberGlow 2s ease-in-out infinite;
+  -o-animation: numberGlow 2s ease-in-out infinite;
   animation: numberGlow 2s ease-in-out infinite;
+  will-change: transform, text-shadow;
 }
 
 @keyframes numberGlow {
@@ -891,6 +1372,110 @@ header {
   .chinese-pattern {
     background-size: 30px 30px;
     opacity: 0.1;
+  }
+  
+  /* 倒计时标题移动端优化 */
+  .countdown-main-title {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+  }
+  
+  /* 欢迎消息移动端优化 */
+  .welcome-message {
+    margin-top: 30px;
+  }
+  
+  .welcome-text {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    letter-spacing: 1px;
+  }
+  
+  /* 新年祝福移动端优化 */
+  .new-year-greeting-section {
+    margin-top: 25px;
+  }
+  
+  .new-year-greeting-title {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    letter-spacing: 2px;
+  }
+  
+  /* 烟花按钮移动端优化 */
+  .firework-button-container {
+    margin-top: 35px;
+  }
+  
+  .firework-button {
+    padding: 15px 40px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    min-width: 200px;
+    letter-spacing: 2px;
+    gap: 10px;
+  }
+  
+  .firework-emoji {
+    font-size: 1.3em;
+  }
+  
+  /* 最后10秒倒计时移动端优化 */
+  .final-countdown-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+  
+  .final-countdown-number {
+    font-size: clamp(6rem, 25vw, 12rem);
+  }
+  
+  /* 新年祝福移动端优化 */
+  .blessing-content {
+    padding: 40px 25px;
+    margin: 0 20px;
+    border-width: 2px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+  }
+  
+  /* 移动端减少动画复杂度 */
+  .final-countdown-number {
+    -webkit-animation: numberPulse 0.8s ease-in-out;
+    animation: numberPulse 0.8s ease-in-out;
+  }
+  
+  /* 移动端优化canvas性能 */
+  #stars,
+  #fireworks,
+  #cursor-trail {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: contents;
+  }
+  
+  /* 移动端优化背景动画 */
+  body {
+    -webkit-background-attachment: scroll;
+    background-attachment: scroll;
+  }
+  
+  .blessing-title {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+  
+  .blessing-text {
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+  
+  .blessing-signature {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-top: 25px;
+    letter-spacing: 2px;
   }
 }
 
