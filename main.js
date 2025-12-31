@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => { 
-    // ================= Canvas 设置 =================
+    /* ================= Canvas 设置 ================= */
     const bgCanvas = document.getElementById('background-particles');
     const fwCanvas = document.getElementById('fireworks');
     const bgCtx = bgCanvas.getContext('2d');
@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // ================= 背景微粒 =================
+    /* ================= 背景微粒 ================= */
     let particles = [];
     const particleCount = 120;
 
@@ -27,8 +27,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 x: random(0, bgCanvas.width),
                 y: random(0, bgCanvas.height),
                 radius: random(1, 3),
-                color: Math.random() > 0.5 
-                    ? 'rgba(245,230,200,0.4)' 
+                color: Math.random() > 0.5
+                    ? 'rgba(245,230,200,0.4)'
                     : 'rgba(215,184,255,0.4)',
                 speedX: random(-0.2, 0.2),
                 speedY: random(-0.1, 0.1)
@@ -53,13 +53,13 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ================= 烟花 =================
+    /* ================= 烟花 ================= */
     let fireworks = [];
 
     function hexToRgb(hex) {
         let m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
-        return m 
-            ? `${parseInt(m[1],16)},${parseInt(m[2],16)},${parseInt(m[3],16)}` 
+        return m
+            ? `${parseInt(m[1],16)},${parseInt(m[2],16)},${parseInt(m[3],16)}`
             : '255,255,255';
     }
 
@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ================= 动画循环 =================
+    /* ================= 动画循环 ================= */
     function animate() {
         drawParticles();
         drawFireworks();
@@ -102,15 +102,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     animate();
 
-    // ================= 点击触发烟花 =================
-    document.getElementById('firework-button').addEventListener('click', () => {
-        createFirework(
-            random(100, fwCanvas.width - 100), 
-            random(100, fwCanvas.height - 100)
-        );
-    });
+    /* ================= 手动触发烟花 ================= */
+    const fireBtn = document.getElementById('firework-button');
+    if (fireBtn) {
+        fireBtn.addEventListener('click', () => {
+            createFirework(
+                random(100, fwCanvas.width - 100),
+                random(100, fwCanvas.height - 100)
+            );
+        });
+    }
 
-    // ================= 当前时间显示（新的一年 · 共赴山海） =================
+    /* ================= 当前时间显示（方案 C） ================= */
     function updateCurrentTime() {
         const now = new Date();
 
@@ -121,8 +124,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const min   = String(now.getMinutes()).padStart(2, '0');
         const sec   = String(now.getSeconds()).padStart(2, '0');
 
-        // 复用原有 DOM，不破坏结构
-        document.getElementById('days').textContent    = `${year}-${month}-${day}`;
+        // TIME · YYYY.MM.DD · HH:MM:SS
+        document.getElementById('days').textContent    = `TIME · ${year}.${month}.${day}`;
         document.getElementById('hours').textContent   = hour;
         document.getElementById('minutes').textContent = min;
         document.getElementById('seconds').textContent = sec;
